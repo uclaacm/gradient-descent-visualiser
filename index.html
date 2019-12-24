@@ -7,9 +7,34 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>gradient descent visualiser</title>
     <meta name="description" content="a mini web-app that introduces the concept of gradient descent" />
+    <link rel="stylesheet" href="css/bulma.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+    <section class="hero is-fullheight is-light is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <h1 class="title">
+                            <span class="handwave">👋</span> Hey there! 
+                        </h1>
+                        <h2 class="subtitle">
+                            Let's talk about gradient descent.
+                        </h2>
+                    </div>
+                    <div class="column">
+                        <div class="graph-container" id="demo-graph"></div>
+                        <div class="has-text-centered">
+                            current point: <span id="demo-current"></span> | starting: <span id="demo-start"></span> | learning rate: 0.25
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <h1>this is just a work in progress! don't judge :)</h1>
     <div id="graph-1"></div>
     <hr />

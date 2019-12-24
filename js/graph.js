@@ -1,6 +1,6 @@
 'use strict'
 
-let options = {
+let g1options = {
     target: '#graph-1',
     title: "set up your gradient descent!",
     xAxis: {
@@ -24,7 +24,7 @@ let options = {
 
 let started = false;
 let currentPos = 0;
-let iter = 1;
+let iterator = 1;
 
 let inputFunc;
 let compiledFunc;
@@ -34,7 +34,7 @@ const badJSONDeepCopy = obj => {
     return JSON.parse(JSON.stringify(obj))
 }
 
-const redrawPlot = (fn, deriv, evalAt, pointsDiff = undefined) => {
+const redrawPlot = (options, fn, deriv, evalAt, iter, pointsDiff = undefined) => {
     console.log("redraw")
 
     // strange quirk to force a title rerender
@@ -66,9 +66,9 @@ const redrawPlot = (fn, deriv, evalAt, pointsDiff = undefined) => {
     functionPlot(options);
 }
 
-const updatePos = (current, learning) => {
-    console.log(-1 * derivative.evaluate({x: current}) * learning)
-    return current + (-1 * derivative.evaluate({x: current}) * learning);
+const updatePos = (current, deriv, learning) => {
+    console.log(-1 * deriv.evaluate({x: current}) * learning)
+    return current + (-1 * deriv.evaluate({x: current}) * learning);
 }
 
 document.getElementById("start-button").addEventListener("click", () => {
@@ -87,7 +87,7 @@ document.getElementById("start-button").addEventListener("click", () => {
     compiledFunc = math.compile(inputFunc);
     
     derivative = math.derivative(inputFunc, 'x');
-    redrawPlot(inputFunc, derivative.toString(), currentPos, [currentPos, compiledFunc.evaluate({x: currentPos})]);
+    redrawPlot(g1options, inputFunc, derivative.toString(), currentPos, iterator, [currentPos, compiledFunc.evaluate({x: currentPos})]);
 });
 
 document.getElementById("update-button").addEventListener("click", () => {
@@ -96,11 +96,76 @@ document.getElementById("update-button").addEventListener("click", () => {
     let learningRate = document.getElementById("learning-rate").value;
     if (isNaN(learningRate)) { return; }
 
-    iter = iter + 1;
-    currentPos = updatePos(currentPos, learningRate)
-    
+    iterator++;
+    currentPos = updatePos(currentPos, derivative, learningRate)
+
     document.getElementById("current-pos").innerHTML = currentPos;
-    redrawPlot(inputFunc, derivative.toString(), currentPos, [currentPos, compiledFunc.evaluate({x: currentPos})]);
+    redrawPlot(g1options, inputFunc, derivative.toString(), currentPos, iterator, [currentPos, compiledFunc.evaluate({x: currentPos})]);
 });
 
-functionPlot(options);
+// functionPlot(g1options);
+
+// demo (opening slide)
+
+let demoIter = 0;
+let demoFunc = 'x^2';
+let demoCompiled = math.compile(demoFunc);
+let demoDeriv = math.derivative(demoFunc, 'x');
+const demoDefault = 0;
+let demoPos = demoDefault;
+const demoRate = 0.25;
+
+const randomStart = () => {
+    return Math.random()*64 - 32;
+}
+
+let demoOptions = {
+    target: '#demo-graph',
+    title: "set up your gradient descent!",
+    xAxis: {
+        label: 'x - axis',
+        domain: [-10, 10]
+    },
+    yAxis: {
+        label: 'y - axis',
+        domain: [-1, 100]
+    },
+    data: [
+        {
+            fn: 'x^2',
+            derivative: {
+                fn: '2 * x',
+                x0: demoDefault
+            }
+        }
+    ]
+}
+
+const advanceDemo = () => {
+    if (Math.abs(demoPos) < 0.01){
+        let newStart = randomStart();
+        demoOptions.data = [
+            {
+                fn: 'x^2',
+                derivative: {
+                    fn: '2 * x',
+                    x0: newStart
+                }
+            }
+        ]
+        demoIter = 0;
+        demoPos = newStart;
+        document.getElementById("demo-start").innerHTML = newStart.toFixed(2);
+    }
+    else{
+        demoIter++;
+    }
+    demoPos = updatePos(demoPos, demoDeriv, demoRate);
+    document.getElementById("demo-current").innerHTML = demoPos.toFixed(2);
+
+    redrawPlot(demoOptions, demoFunc, demoDeriv.toString(), demoPos, demoIter, [demoPos, demoCompiled.evaluate({x: demoPos})]);
+}
+
+setInterval(() => advanceDemo(), 500);
+
+advanceDemo()
