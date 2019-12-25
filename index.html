@@ -10,41 +10,140 @@
     <link rel="stylesheet" href="css/bulma.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
 <body>
-    <section class="hero is-fullheight is-light is-bold">
+    <section class="hero is-fullheight">
         <div class="hero-body">
             <div class="container">
                 <div class="columns">
                     <div class="column">
-                        <h1 class="title">
-                            <span class="handwave">👋</span> Hey there! 
+                        <h1 class="title is-1">
+                            <span class="handwave">👋</span> Hey there!
                         </h1>
-                        <h2 class="subtitle">
-                            Let's talk about gradient descent.
+                        <br />
+                        <h2 class="subtitle is-3">
+                            Let's talk about <b>gradient descent.</b>
                         </h2>
+                        <h3 class="subtitle">
+                            In this mini-app, we'll cover the basic intuition behind gradient descent, and slowly blend
+                            in the math and theory background.
+                        </h3>
+                        <div>
+                            <button class="button is-link is-large">
+                                <span class="icon is-small">
+                                    <i class="fas fa-play"></i>
+                                </span>
+                                <span>Let's Start!</span>
+                            </button>
+                        </div>
+                        <hr />
+                        <p>
+                            I already know what gradient descent is, <a href="#">skip me to the math.</a>
+                        </p>
                     </div>
                     <div class="column">
-                        <div class="graph-container" id="demo-graph"></div>
-                        <div class="has-text-centered">
-                            current point: <span id="demo-current"></span> | starting: <span id="demo-start"></span> | learning rate: 0.25
+                        <div class="box">
+                            <div id="demo-graph"></div>
+                        </div>
+                        <div class="tags has-addons are-large">
+                            <span class="tag is-primary">Current Point</span>
+                            <span class="tag is-dark" id="demo-current"></span>
+                        </div>
+                        <div>
+                            <div class="field is-grouped is-grouped-multiline">
+                                <div class="control">
+                                    <div class="tags has-addons">
+                                        <span class="tag is-link">Starting Point</span>
+                                        <span class="tag is-dark" id="demo-start"></span>
+                                    </div>
+                                </div>
+                                <div class="control">
+                                    <div class="tags has-addons">
+                                        <span class="tag is-link">learning rate</span>
+                                        <span class="tag is-dark">0.25</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <h1>this is just a work in progress! don't judge :)</h1>
-    <div id="graph-1"></div>
-    <hr />
-    <input id="function-input" value="x^2"/>
-    <input id="initial-start" type="number" value="5"/>
-    <span>current pos: <span id="current-pos"></span></span>
-    <button id="start-button">start</button>
-    <hr />
-    <input id="learning-rate" type="number" value="0.25"/>
-    <button id="update-button">update</button>
+    <section class="hero is-fullheight is-primary is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1">
+                    so... what is gradient descent?
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="hero is-fullheight is-light is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1">
+                    Now, it's your turn! Play around!
+                </h1>
+                <details>
+                   <summary>
+                        Some things to try: (click to expand)
+                   </summary>
+                   <ul>
+                       <li>Periodic functions, like <code>sin(x)</code></li>
+                       <li>Functions with no minimum, like <code>x^3</code></li>
+                   </ul>
+                </details>
+                <div class="columns">
+                    <div class="column">
+                        <hr />
+                        <div class="field">
+                            <label class="label">Function</label>
+                            <div class="control">
+                                <input class="input is-primary" type="text" id="function-input" value="x^2+x" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Starting Point</label>
+                            <div class="control">
+                                <input class="input is-primary" id="initial-start" type="number" value="5" />
+                            </div>
+                        </div>
+                        <button class="button" id="start-button">start</button>
+                        <hr />
+                        <div class="field">
+                            <label class="label">Learning Rate</label>
+                            <div class="control">
+                                <input class="input is-primary" id="learning-rate" type="number" value="0.25" />
+                            </div>
+                        </div>
+                        <button class="button" id="update-button">update</button>
+                    </div>
+                    <div class="column">
+                        <div class="box">
+                            <div id="graph-1"></div>
+                        </div>
+                        <div class="tags has-addons are-large">
+                            <span class="tag is-primary">Current Point</span>
+                            <span class="tag is-dark" id="current-pos">set up your graph!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                This mini-app was made by the Teach LA Dev Team. We hope you enjoyed it as much as we enjoyed making it.
+            </p>
+            <p>
+                made with <span class="fa fa-heart heartbeat" style="color:red;" aria-label="love"></span>
+            </p>
+        </div>
+    </footer>
     <script src="js/d3.min.js?v3.5.17"></script>
     <script src="js/function-plot.js?v1.19.1"></script>
     <script src="js/math.min.js?v6.2.5"></script>

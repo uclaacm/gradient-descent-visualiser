@@ -10,6 +10,10 @@ body {
     display: inline-block;
 }
 
+.heartbeat {
+    animation: heartbeat 2s infinite;
+}
+
 @keyframes handwave {
     0% {
         transform: rotate(0.0deg)
@@ -39,3 +43,25 @@ body {
         transform: rotate(0.0deg)
     }
 }
+
+@keyframes heartbeat {
+    0% {
+      transform: scale(0.75);
+    }
+
+    25% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(0.75);
+    }
+
+    75% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(0.75);
+    }
+  }

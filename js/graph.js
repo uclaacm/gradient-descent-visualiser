@@ -1,8 +1,11 @@
 'use strict'
 
+// sorry, everything here is super messy! i promise I'll tidy it up eventually :)
+// - matt @malsf21
+
 let g1options = {
     target: '#graph-1',
-    title: "set up your gradient descent!",
+    title: "set up",
     xAxis: {
         label: 'x - axis',
         domain: [-6, 6]
@@ -13,9 +16,9 @@ let g1options = {
     },
     data: [
         {
-            fn: 'x^2',
+            fn: 'x^2+x',
             derivative: {
-                fn: '2 * x',
+                fn: '2 * x + 1',
                 x0: 2
             }
         }
@@ -73,10 +76,14 @@ const updatePos = (current, deriv, learning) => {
 
 document.getElementById("start-button").addEventListener("click", () => {
     console.log("start")
-    if (started) { return; }
     let inputEval = document.getElementById("initial-start").value;
     let evalAt = Number(inputEval);
     if (isNaN(evalAt)){ return; }
+
+    iterator = 0;
+    if (g1options.data.length >= 2){
+       g1options.data = [g1options.data[0]];
+    }
 
     started = true;
 
@@ -103,7 +110,7 @@ document.getElementById("update-button").addEventListener("click", () => {
     redrawPlot(g1options, inputFunc, derivative.toString(), currentPos, iterator, [currentPos, compiledFunc.evaluate({x: currentPos})]);
 });
 
-// functionPlot(g1options);
+functionPlot(g1options);
 
 // demo (opening slide)
 
