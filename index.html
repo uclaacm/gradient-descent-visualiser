@@ -72,6 +72,39 @@
             </div>
         </div>
     </section>
+    <section class="hero is-fullheight is-info is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1">
+                    But first: what's the point?
+                </h1>
+                <div class="columns">
+                    <div class="column">
+                        <p class="subtitle">
+                            <del>Sexy</del> cool computer science concepts like <b>machine learning</b> and <b>data science</b> often boil down to <b>math</b>.
+                        </p>
+                        <p class="subtitle">
+                            A common mathematical operation we want to do is to <b>minimize a function</b>. Why?
+                        </p>
+                        <p class="subtitle">
+                            In data science, we'll often try to guess the pattern in data; the most basic form of this is like finding a line-of-best-fit (called <b>linear regression</b>).
+                        </p>
+                        <p class="subtitle">
+                            Like in anything, we'll want to know <b>how wrong we were</b>. We can make that notion a bit more rigorous with a <b>cost function</b>, which tells us how wrong we are. More on those specifics later.
+                        </p>
+                        <p class="subtitle">
+                            So, if we want our best model, we'll want to <b>minimize our cost function</b> - and that's where gradient descent comes in.
+                        </p>
+                    </div>
+                    <div class="column">
+                        <div class="box">
+                            <div id="generic-error-graph"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="hero is-fullheight is-primary is-bold">
         <div class="hero-body">
             <div class="container">
@@ -111,7 +144,12 @@
                                 <input class="input is-primary" id="initial-start" type="number" value="5" />
                             </div>
                         </div>
-                        <button class="button" id="start-button">start</button>
+                        <button class="button is-primary" id="start-button">
+                            <span class="icon is-small">
+                                <i class="fas fa-sliders-h"></i>
+                            </span>
+                            <span>Set Up</span>
+                        </button>
                         <hr />
                         <div class="field">
                             <label class="label">Learning Rate</label>
@@ -119,7 +157,12 @@
                                 <input class="input is-primary" id="learning-rate" type="number" value="0.25" />
                             </div>
                         </div>
-                        <button class="button" id="update-button">update</button>
+                        <button class="button is-primary" id="update-button">
+                            <span class="icon is-small">
+                                <i class="fas fa-redo-alt"></i>
+                            </span>
+                            <span>Next Iteration</span>
+                        </button>
                     </div>
                     <div class="column">
                         <div class="box">

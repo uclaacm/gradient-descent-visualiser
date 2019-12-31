@@ -12,7 +12,7 @@ let g1options = {
     },
     yAxis: {
         label: 'y - axis',
-        domain: [-1, 36]
+        domain: [-18, 36]
     },
     data: [
         {
@@ -135,7 +135,7 @@ let demoOptions = {
     },
     yAxis: {
         label: 'y - axis',
-        domain: [-1, 100]
+        domain: [-50, 100]
     },
     data: [
         {
@@ -176,3 +176,45 @@ const advanceDemo = () => {
 setInterval(() => advanceDemo(), 500);
 
 advanceDemo()
+
+// generic error graph
+
+let genErrorPoints = [];
+
+for (let i = 1; i < 20; i += 0.3){
+    genErrorPoints.push([
+        i + Math.random()*0.1,
+        11*i/8 + Math.random()
+    ])
+}
+
+let errorGraphOptions = {
+    target: '#generic-error-graph',
+    title: "Which Line Is Better?",
+    xAxis: {
+        label: 'x - axis',
+        domain: [0, 10]
+    },
+    yAxis: {
+        label: 'y - axis',
+        domain: [0, 20]
+    },
+    data: [
+        {
+            fn: '3x/2'
+        },
+        {
+            fn: '5x/4 + 1'
+        },
+        {
+            fn: '11x/8 + sin(x)'
+        },
+        {
+            points: genErrorPoints,
+            fnType: 'points',
+            graphType: 'scatter'
+        }
+    ]
+}
+
+functionPlot(errorGraphOptions);
