@@ -182,10 +182,21 @@ advanceDemo()
 let genErrorPoints = [];
 
 for (let i = 1; i < 20; i += 0.3){
-    genErrorPoints.push([
-        i + Math.random()*0.1,
-        11*i/8 + Math.random()
-    ])
+    genErrorPoints.push(
+        [
+            i + Math.random()*0.1,
+            11*i/8 - 0.5* Math.random()
+        ],
+        [
+            i + Math.random()*0.1,
+            11*i/8 + Math.random()
+        ],
+        [
+            i + Math.random()*0.1,
+            11*i/8 + 0.5 * Math.random()
+        ]
+    )
+    
 }
 
 let errorGraphOptions = {
@@ -201,18 +212,18 @@ let errorGraphOptions = {
     },
     data: [
         {
+            points: genErrorPoints,
+            fnType: 'points',
+            graphType: 'scatter'
+        },
+        {
             fn: '3x/2'
         },
         {
             fn: '5x/4 + 1'
         },
         {
-            fn: '11x/8 + sin(x)'
-        },
-        {
-            points: genErrorPoints,
-            fnType: 'points',
-            graphType: 'scatter'
+            fn: '23x/16 + sin(x)'
         }
     ]
 }
