@@ -20,7 +20,8 @@ let g1options = {
             derivative: {
                 fn: '2 * x + 1',
                 x0: 2
-            }
+            },
+            attr: { "stroke-width": 3 }
         }
     ]
 }
@@ -143,7 +144,8 @@ let demoOptions = {
             derivative: {
                 fn: '2 * x',
                 x0: demoDefault
-            }
+            },
+            attr: { "stroke-width": 3 }
         }
     ]
 }
@@ -157,7 +159,8 @@ const advanceDemo = () => {
                 derivative: {
                     fn: '2 * x',
                     x0: newStart
-                }
+                },
+                attr: { "stroke-width": 3 }
             }
         ]
         demoIter = 0;
