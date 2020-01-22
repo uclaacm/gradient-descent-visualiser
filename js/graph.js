@@ -111,6 +111,17 @@ document.getElementById("update-button").addEventListener("click", () => {
     redrawPlot(g1options, inputFunc, derivative.toString(), currentPos, iterator, [currentPos, compiledFunc.evaluate({x: currentPos})]);
 });
 
+let setFnInputVal = (val, start = 4) => {
+    document.getElementById("function-input").value = val;
+    document.getElementById("initial-start").value = start;
+}
+
+document.getElementById("fn-x-2").addEventListener("click", () => setFnInputVal("x^2"));
+document.getElementById("fn-x-3").addEventListener("click", () => setFnInputVal("x^3"));
+document.getElementById("fn-sin-x").addEventListener("click", () => setFnInputVal("sin(x)", 2));
+document.getElementById("fn-1-x").addEventListener("click", () => setFnInputVal("1/x", 0.5));
+document.getElementById("fn-poly-x").addEventListener("click", () => setFnInputVal("x + 2 * (x^2) + (0.4) * x^3", 2));
+
 functionPlot(g1options);
 
 // demo (opening slide)
@@ -182,53 +193,53 @@ advanceDemo()
 
 // generic error graph
 
-let genErrorPoints = [];
+// let genErrorPoints = [];
 
-for (let i = 1; i < 20; i += 0.3){
-    genErrorPoints.push(
-        [
-            i + Math.random()*0.1,
-            11*i/8 - 0.5* Math.random()
-        ],
-        [
-            i + Math.random()*0.1,
-            11*i/8 + Math.random()
-        ],
-        [
-            i + Math.random()*0.1,
-            11*i/8 + 0.5 * Math.random()
-        ]
-    )
+// for (let i = 1; i < 20; i += 0.3){
+//     genErrorPoints.push(
+//         [
+//             i + Math.random()*0.1,
+//             11*i/8 - 0.5* Math.random()
+//         ],
+//         [
+//             i + Math.random()*0.1,
+//             11*i/8 + Math.random()
+//         ],
+//         [
+//             i + Math.random()*0.1,
+//             11*i/8 + 0.5 * Math.random()
+//         ]
+//     )
     
-}
+// }
 
-let errorGraphOptions = {
-    target: '#generic-error-graph',
-    title: "Which Line Is Better?",
-    xAxis: {
-        label: 'x - axis',
-        domain: [0, 10]
-    },
-    yAxis: {
-        label: 'y - axis',
-        domain: [0, 20]
-    },
-    data: [
-        {
-            points: genErrorPoints,
-            fnType: 'points',
-            graphType: 'scatter'
-        },
-        {
-            fn: '3x/2'
-        },
-        {
-            fn: '5x/4 + 1'
-        },
-        {
-            fn: '23x/16 + sin(x)'
-        }
-    ]
-}
+// let errorGraphOptions = {
+//     target: '#generic-error-graph',
+//     title: "Which Line Is Better?",
+//     xAxis: {
+//         label: 'x - axis',
+//         domain: [0, 10]
+//     },
+//     yAxis: {
+//         label: 'y - axis',
+//         domain: [0, 20]
+//     },
+//     data: [
+//         {
+//             points: genErrorPoints,
+//             fnType: 'points',
+//             graphType: 'scatter'
+//         },
+//         {
+//             fn: '3x/2'
+//         },
+//         {
+//             fn: '5x/4 + 1'
+//         },
+//         {
+//             fn: '23x/16 + sin(x)'
+//         }
+//     ]
+// }
 
-functionPlot(errorGraphOptions);
+// functionPlot(errorGraphOptions);

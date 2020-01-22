@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>gradient descent visualiser</title>
-    <meta name="description" content="a mini web-app that introduces the concept of gradient descent" />
+    <meta name="description" content="a visual supplement to Teach LA's curriculum on gradient descent" />
     <link rel="stylesheet" href="css/bulma.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
@@ -24,27 +24,29 @@
                         </h1>
                         <br />
                         <h2 class="subtitle is-3">
-                            Let's talk about <b>gradient descent.</b>
+                            Let's play with <b>gradient descent.</b>
                         </h2>
                         <h3 class="subtitle">
-                            In this mini-app, we'll cover the basic intuition behind gradient descent, and slowly blend
-                            in the math and theory background.
+                            This mini-app acts as an interactive supplement to Teach LA's curriculum on linear regression and gradient descent. 
                         </h3>
-                        <div>
-                            <a href="#whats-the-point" class="button is-link is-large">
+                        <div class="buttons">
+                            <a href="https://colab.research.google.com/drive/1n8bK5dcoLHauctBDyy_1I018tlb619Nr?authuser=1" class="button is-primary is-large">
                                 <span class="icon is-small">
-                                    <i class="fas fa-play"></i>
+                                    <i class="fas fa-book"></i>
                                 </span>
-                                <span>Let's Start!</span>
+                                <span>Lesson (do this first!)</span>
+                            </a>
+                            <a href="#playground" class="button is-link is-large">
+                                <span class="icon is-small">
+                                    <i class="fas fa-chart-line"></i>
+                                </span>
+                                <span>Playground</span>
                             </a>
                         </div>
                         <hr />
                         <p>
-                            I'm familiar with calculus and the idea of gradient descent, <a href="#">skip me to the math.</a>
-                        </p>
-                        <p>
-                            I just want to play around with functions, <a href="#playground">skip me to the playground.</a>
-                        </p>
+                            Not sure what's going on? Check out <a href="https://colab.research.google.com/drive/1n8bK5dcoLHauctBDyy_1I018tlb619Nr?authuser=1">the lesson notebook</a> and <a href="https://docs.google.com/presentation/d/16b5fIM80mlOgvMK4_ly5ESvD9a01t1rolWXHVtvi0YQ/">the corresponding slides</a>.
+                        </xp>
                     </div>
                     <div class="column">
                         <div class="box">
@@ -75,7 +77,7 @@
             </div>
         </div>
     </section>
-    <section class="hero is-fullheight is-info is-bold" id="whats-the-point">
+    <!-- <section class="hero is-fullheight is-info is-bold" id="whats-the-point">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title is-1">
@@ -108,8 +110,8 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section class="hero is-fullheight is-primary is-bold">
+    </section> -->
+    <!-- <section class="hero is-fullheight is-primary is-bold">
         <div class="hero-body">
             <div class="container">
                 <div class="columns">
@@ -241,30 +243,28 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <section class="hero is-fullheight" id="playground">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title is-1">
-                    Now, it's your turn! Play around!
+                   It's your turn.
                 </h1>
-                <details>
-                   <summary>
-                        Some things to try: (click to expand)
-                   </summary>
-                   <ul>
-                       <li>Periodic functions, like <code>sin(x)</code></li>
-                       <li>Functions with no minimum, like <code>x^3</code></li>
-                   </ul>
-                </details>
                 <div class="columns">
                     <div class="column">
-                        <hr />
                         <div class="field">
                             <label class="label">Function</label>
                             <div class="control">
                                 <input class="input is-primary" type="text" id="function-input" value="x^2+x" />
                             </div>
+                        </div>
+                        <p>functions you should try (click to auto-format):</p>
+                        <div class="buttons">
+                            <button class="button is-primary is-light" id="fn-x-2">x<sup><sup>2</sup></sup></button>
+                            <button class="button is-primary is-light" id="fn-x-3">x<sup><sup>3</sup></sup></button>
+                            <button class="button is-primary is-light" id="fn-sin-x">sin(x)</button>
+                            <button class="button is-primary is-light" id="fn-1-x">1/x</button>
+                            <button class="button is-primary is-light" id="fn-poly-x">poly</button>
                         </div>
                         <div class="field">
                             <label class="label">Starting Point</label>
@@ -309,18 +309,73 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title is-1">
-                    Appendix & More Things!
+                    More Cool Things!
                 </h1>
-                <p class="subtitle">
-                    boop
-                </p>
+                <ul>
+                    <li>
+                        <b><a target="_blank" rel="noopener noreferrer"
+                            href="https://docs.google.com/presentation/d/16b5fIM80mlOgvMK4_ly5ESvD9a01t1rolWXHVtvi0YQ/">
+                            Corresponding Lesson 4 + 5 Slides: Linear Regression
+                        </a></b>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187">
+                            Udacity: Intro to Deep Learning with TensorFlow
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://developers.google.com/machine-learning/crash-course/">
+                            Google: Machine Learning Crash Course
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.coursera.org/learn/machine-learning">
+                            Coursera: Introduction to Machine Learning
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="http://www.deeplearningbook.org/">
+                            The Deep Learning Textbook
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="http://ciml.info/">
+                            Hal Daumé III: A Course in Machine Learning
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.coursera.org/specializations/deep-learning">
+                            Coursera: Deep Learning Specialization
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://pytorch.org/tutorials/">
+                            Pytorch: Getting Started with Pytorch
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="http://rail.eecs.berkeley.edu/deeprlcourse/resources/">
+                            UC Berkeley: CS285 (Deep Reinforcement Learning) Resources
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer"
+                            href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">
+                            3Blue1Brown: Neural Networks
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                This mini-app was made by the Teach LA Dev Team. We hope you enjoyed it as much as we enjoyed making it.
+                This mini-app was made by the <a href="https://teachla.uclaacm.com">Teach LA Dev Team</a>. We hope you enjoyed it as much as we enjoyed making it.
             </p>
             <p>
                 made with <span class="fa fa-heart heartbeat" style="color:red;" aria-label="love"></span>
