@@ -64,4 +64,13 @@ body {
     100% {
       transform: scale(0.75);
     }
-  }
+}
+
+circle {
+    stroke-width: 4;
+}
+
+.derivative path {
+    stroke-width: 2;
+    stroke: #E95420;
+}

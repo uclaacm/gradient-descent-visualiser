@@ -39,14 +39,14 @@ const badJSONDeepCopy = obj => {
 }
 
 const redrawPlot = (options, fn, deriv, evalAt, iter, pointsDiff = undefined) => {
-    console.log("redraw")
+    // console.log("redraw")
 
     // strange quirk to force a title rerender
     delete options.title;
     functionPlot(options);
 
     options.title = "iteration " + iter;
-    console.log(options.title)
+    // console.log(options.title)
     options.data[0].fn = fn;
     options.data[0].derivative = {
         fn: deriv,
@@ -71,12 +71,12 @@ const redrawPlot = (options, fn, deriv, evalAt, iter, pointsDiff = undefined) =>
 }
 
 const updatePos = (current, deriv, learning) => {
-    console.log(-1 * deriv.evaluate({x: current}) * learning)
+    // console.log(-1 * deriv.evaluate({x: current}) * learning)
     return current + (-1 * deriv.evaluate({x: current}) * learning);
 }
 
 document.getElementById("start-button").addEventListener("click", () => {
-    console.log("start")
+    // console.log("start")
     let inputEval = document.getElementById("initial-start").value;
     let evalAt = Number(inputEval);
     if (isNaN(evalAt)){ return; }
@@ -99,7 +99,7 @@ document.getElementById("start-button").addEventListener("click", () => {
 });
 
 document.getElementById("update-button").addEventListener("click", () => {
-    console.log("update")
+    // console.log("update")
     if (!started) { return; }
     let learningRate = document.getElementById("learning-rate").value;
     if (isNaN(learningRate)) { return; }
